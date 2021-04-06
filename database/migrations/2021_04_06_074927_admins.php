@@ -17,7 +17,7 @@ class Admins extends Migration
             $table->string('id', 36);
             $table->string('username')->unique();
             $table->string('password');
-            $table->tinyInteger('is_super_admin');
+            $table->boolean('is_super_admin')->default(false);
             $table->primary('id');
             $table->timestamps();
         });
