@@ -24,7 +24,7 @@ class AdminFactory extends Factory
         return [
             'id'=>$this->faker->uuid(),
             'username'=>$this->faker->userName(),
-            'password'=>md5('123456'),
+            'password'=>bcrypt('123456'),
 
         ];
     }
