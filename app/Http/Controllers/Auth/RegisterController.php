@@ -71,9 +71,10 @@ class RegisterController extends Controller
         return view('auth.register');
     }
     public function store(RegisterRequest $request){
-        return Admin::create([
+        Admin::create([
             'username' => $request['username'],
             'password' => bcrypt($request['password']),
         ]);
+        return view('auth.login');
     }
 }

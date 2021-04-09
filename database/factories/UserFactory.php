@@ -24,6 +24,8 @@ class UserFactory extends Factory
     {
         return [
             'id'=>$this->faker->uuid(),
+            'security_code'=>$this->generateRandomString(),
+            'video_type'=>$this->faker->randomElement($array = array ('A','B')),
             'email' => $this->faker->unique()->safeEmail,
         ];
     }
@@ -40,5 +42,14 @@ class UserFactory extends Factory
                 'email_verified_at' => null,
             ];
         });
+    }
+    function generateRandomString($length = 8) {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 }

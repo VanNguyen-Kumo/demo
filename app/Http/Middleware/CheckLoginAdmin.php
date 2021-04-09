@@ -17,12 +17,15 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::guard('admin')->check()&&Auth::guard('admin')->user()->is_super_admin==1)
+       // if(Auth::guard('admin')->check()&&Auth::guard('admin')->user()->is_super_admin===1)
+        if(Auth::guard('admin')->check())
         {
             return $next($request);
         }else{
-            return redirect()->route('Auth.login');
+            return redirect()->route('admin.login');
         }
 
     }
+
+
 }

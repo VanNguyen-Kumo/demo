@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('admin/store') }}">
+                    <form method="POST" action="{{ route('admin.create') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -39,8 +39,11 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+
                             </div>
+
                         </div>
+                        <a href="{{ router('admin.login') }}" class="text-sm text-gray-700 underline">Log in</a>
                     </form>
                 </div>
             </div>

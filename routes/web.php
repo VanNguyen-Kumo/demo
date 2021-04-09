@@ -1,26 +1,30 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth;
+use App\Http\Controllers\Admin;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/admin',[Admin\AdminController::class, 'index'])->middleware('checkLoginAdmin');
 
-Route::get('/', function () {
-    return view('welcome');
+//------------------------add_user-------------------------
+Route::post('admin/add-user',[Admin\AdminController::class],'addUser')->name('admin.add-user');
+Route::group([
+    'prefix'=>'admin',
+    'namespace'=>'Auth',
+//    'name'=>'admin.'
+], function (){
+    //------------------------login--------------------------
+        Route::get('login',[LoginController::class,'index'])->name('admin.login');
+        Route::post('login',[LoginController::class,'login']);
+
+    //------------------------register------------------------
+        Route::get('create',[RegisterController::class,'create'])->name('admin.create');
+        Route::post('store',[RegisterController::class,'store']);
+
+    //------------------------logout-------------------------
+        Route::get('logout',[LoginController::class,'logout'])->name('admin.logout');
+
+
 });
-Route::get('/admin', function () {
-    return view('admin.index');
-})->middleware('checkLoginAdmin');
-Route::get('/admin/login',[Auth\LoginController::class,'index']);
-Route::post('/admin/login',[Auth\LoginController::class,'login']);
-Route::get('/admin/create',[Auth\RegisterController::class,'create']);
-Route::post('/admin/store',[Auth\RegisterController::class,'store']);
