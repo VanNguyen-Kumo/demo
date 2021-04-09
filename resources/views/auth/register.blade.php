@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.create') }}">
+                    <form method="POST" action="{{ url('admin/store') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -43,7 +43,7 @@
                             </div>
 
                         </div>
-                        <a href="{{ router('admin.login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        <a href="{{ route('admin.login') }}" class="text-sm text-gray-700 underline">Log in</a>
                     </form>
                 </div>
             </div>

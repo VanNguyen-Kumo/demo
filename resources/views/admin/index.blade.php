@@ -17,62 +17,14 @@
                             type="submit">Tìm kiếm
                     </button>
                     @if( Auth::guard('admin')->user()->is_super_admin === 1)
-                        <a href="" class="form-control btn btn-success w-auto"
-                           role="button" data-toggle="modal" data-target="#exampleModalCenter">Thêm </a>
+                        <a href=" {{ route('admin.create-user') }}">Thêm </a>
                 @endif
-                <!-- Modal -->
-                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action=" " method="POST">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Email</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                                   aria-describedby="Email" placeholder="Enter email">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Security_code</label>
-                                            <input type="text" class="form-control" placeholder="Security code">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Video_type</label>
-                                            <input type="text" class="form-control" placeholder="Video type">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Token key</label>
-                                            <input type="text" class="form-control" placeholder="Token key">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="
                             margin-left: 100px;">Xin chào {{ Auth::guard('admin')->user()->username }}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li style="text-align: center">
-                                {{--                                <a style="font-size:16px" class="form-control btn btn-link text-md-right w-auto"--}}
-                                {{--                                   role="button"--}}
-                                {{--                                   href="{{ route('logout') }}"--}}
-                                {{--                                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">--}}
-                                {{--                                    {{ __('ログアウト') }}</a>--}}
-                                {{--                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
-                                {{--                                    @csrf--}}
-                                {{--                                </form>--}}
                                 <a href="{{ route('admin.logout') }}">logout</a>
                             </li>
                             <li style="text-align: center">
@@ -84,7 +36,6 @@
             </div>
         </div>
     </form>
-
     <h4 style="text-align: center;margin:25px 0">Danh sách khách hàng</h4>
     <table class="table table-stripped">
         <thead>

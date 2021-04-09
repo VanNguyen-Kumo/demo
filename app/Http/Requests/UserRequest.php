@@ -13,7 +13,7 @@ class UserRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,10 +24,29 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=>'required:unique:user',
-            'security'=>'required',
+            'email'=>'required:unique:users',
+            'security_code'=>[
+                'required',
+                'size:8',
+                'regex:/^(?=.*?[A-Z])(?=.*?[0-9]).+$/'
+
+        ],
             'video_type'=>'required',
-            'token_key'=>'notnull',
+            'token_key'=>'nullable',
+        ];
+
+    }
+    public function messages()
+    {
+        return [
+            'email.required' => 'Dữ liệu không được để trống',
+            'email.unique'=>'Email đã tồn tại',
+            'security_code.required' => 'Dữ liệu không được để trống',
+            'security_code.size'=>'Mã code phải đúng 8 ký tự',
+            'security.regex'=>'Chữ hoa kèm số',
+
         ];
     }
+
+
 }
