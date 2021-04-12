@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Webpatser\Uuid\Uuid;
 class Admin extends Authenticatable
 {
+    public $incrementing = false;
+
     use HasFactory;
     protected $table = 'admins';
     protected $fillable = [

@@ -43,8 +43,13 @@ class UserRequest extends FormRequest
             'email.unique'=>'Email đã tồn tại',
             'security_code.required' => 'Dữ liệu không được để trống',
             'security_code.size'=>'Mã code phải đúng 8 ký tự',
-            'security.regex'=>'Chữ hoa kèm số',
+            'security_code.regex'=>'Chữ hoa kèm số',
 
+        ];
+    }
+    public function attributes(){
+        return [
+            'security_code'=>'code',
         ];
     }
 
