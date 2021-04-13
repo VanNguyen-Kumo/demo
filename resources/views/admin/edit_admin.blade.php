@@ -24,6 +24,9 @@
                                 <label class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password">
+                                    @if($errors->has('password'))
+                                        <div class="error">{{ $errors->first('password') }}</div>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">

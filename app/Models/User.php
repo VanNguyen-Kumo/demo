@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Webpatser\Uuid\Uuid;
 
 class User extends Authenticatable
@@ -53,5 +54,9 @@ class User extends Authenticatable
     public static function generateUuid()
     {
         return Uuid::generate();
+    }
+    public static function getUser(){
+        $records=DB::table('users')->select('email', 'security_code', 'video_type', 'token_key')->get()->toArray();
+        return $records;
     }
 }

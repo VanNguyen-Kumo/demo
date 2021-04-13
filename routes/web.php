@@ -4,7 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
-
+use App\Http\Controllers;
 Route::group([
     'prefix'=>'admin',
     'namespace'=>'Admin',
@@ -27,6 +27,9 @@ Route::group([
     Route::post('/edit-admin/{id}',[AdminController::class,'adminUpdate'])->name('admin.update-admin');
 //------------------------delete_admin------------------------
     Route::get('/del-admin/{id}',[AdminController::class,'adminDestroy'])->name('admin.destroy-admin');
+    //--------------------export-user-------------------------
+    Route::get('/exportExcel-user',[AdminController::class,'exportExcel'])->name('admin.exportExcel-user');
+    Route::get('/exportCSV-user',[AdminController::class,'exportCSV'])->name('admin.exportCSV-user');
 });
 Route::group([
     'prefix'=>'admin',
@@ -46,3 +49,6 @@ Route::group([
 
 
 });
+
+Route::get('/',[Controllers\MailController::class,'index'])->name('index');
+Route::get('/sendMail',[Controllers\MailController::class,'sendMail'])->name('sendMail');

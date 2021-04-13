@@ -1,5 +1,12 @@
 @extends('layouts.app')
-
+<style>
+    .table th, .table td {
+        padding: 10px 10px !important;
+    }
+    .demo a{
+        margin-bottom: 10px;
+    }
+</style>
 @section('content')
 
     <form method="GET" action="">
@@ -16,9 +23,10 @@
                     <button class="form-control btn btn-primary" style="margin: 0 20px; width: 120px"
                             type="submit">Tìm kiếm
                     </button>
+                    <a href="{{ route('admin.exportCSV-user') }}" tyle="margin-left: 70px;">Export CSV</a>
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="
-                            margin-left: 100px;">Xin chào {{ Auth::guard('admin')->user()->username }}
+                            margin-left: 50px;color: #3F7DC7">Xin chào {{ Auth::guard('admin')->user()->username }}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li style="text-align: center;padding: 5px 0;">
@@ -40,6 +48,7 @@
 
                         </ul>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -81,8 +90,10 @@
                                 <td>{{$item->security_code}}</td>
                                 <td>{{$item->video_type}}</td>
                                 <td>
+                                    @if( Auth::guard('admin')->user()->is_super_admin === 1)
                                     <a href="{{ route('admin.edit-user',$item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update </a>
                                     <a href="{{ route('admin.destroy-user',$item->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Delete </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty
@@ -102,7 +113,7 @@
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="demo">
                         @forelse($admin as $admins)
                             <tr>
                                 @if(app('request')->input('page'))
@@ -110,12 +121,16 @@
                                 @else
                                     <th scope="row">{{ $loop->iteration }}</th>
                                 @endif
-                                <td style="padding: 13px 8px !important;">{{$admins->username}}</td>
-                                <td style="padding: 13px 8px !important;">{{$admins->password}}</td>
-                                <td style="padding: 13px 8px !important;">{{$admins->is_super_admin}}</td>
-                                <td style="padding: 13px 8px !important;">
-                                    <a href="{{ route('admin.edit-admin',$admins->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update </a>
+                                <td>{{$admins->username}}</td>
+                                <td>{{$admins->password}}</td>
+                                <td>{{$admins->is_super_admin}}</td>
+                                <td>
+                                    @if( Auth::guard('admin')->user()->is_super_admin === 1)
+                                        <div class="demo">
+                                            <a href="{{ route('admin.edit-admin',$admins->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update </a>
+                                        </div>
                                     <a href="{{ route('admin.destroy-admin',$admins->id) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Delete </a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

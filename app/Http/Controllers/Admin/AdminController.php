@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\AdminRequest;
 use App\Models\User;
 use App\Models\Admin;
+use Excel;
 
 class AdminController extends Controller
 {
@@ -85,6 +87,12 @@ class AdminController extends Controller
         $admin=Admin::where('id','=',$id)->first();
         $admin->delete();
         return redirect('/admin');
+    }
+    public function  exportExcel(){
+        return Excel::download(new UsersExport,'User.xlsx');
+    }
+    public function  exportCSV(){
+        return Excel::download(new UsersExport,'User.csv');
     }
 }
 
