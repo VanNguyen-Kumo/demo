@@ -30,20 +30,14 @@
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li style="text-align: center;padding: 5px 0;">
-                                <a href="{{ route('admin.logout') }}">logout</a>
+                                <a href="{{ route('admin.logout') }}">LogOut</a>
                             </li>
                             <li style="text-align: center;padding: 5px 0;">
+
                                 <a href="{{ route('admin.create') }}">Register</a>
                             </li>
                             <li style="text-align: center;padding: 5px 0;">
-                                @if( Auth::guard('admin')->user()->is_super_admin === 1)
                                     <a href=" {{ route('admin.create-user') }}">Create User</a>
-                                @endif
-                            </li>
-                            <li style="text-align: center;padding: 5px 0;">
-                                @if( Auth::guard('admin')->user()->is_super_admin === 1)
-                                    <a href="{{ route('admin.create-admin') }}">Create Admin</a>
-                                @endif
                             </li>
 
                         </ul>
