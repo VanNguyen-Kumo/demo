@@ -11,6 +11,7 @@ Route::group([
     'namespace'=>'Admin',
 ], function (){
     Route::get('/',[AdminController::class, 'index'])->name('home')->middleware('checkLoginAdmin');
+    Route::get('/search',[AdminController::class, 'search'])->name('search')->middleware('checkLoginAdmin');
 //------------------------add_user-------------------------
     Route::get('/create-user',[AdminController::class,'create'])->name('admin.create-user')->middleware('checkLoginAdmin');
     Route::post('/store-user',[AdminController::class,'store'])->name('admin.store-user');

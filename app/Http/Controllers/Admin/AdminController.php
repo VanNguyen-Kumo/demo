@@ -9,13 +9,15 @@ use App\Http\Requests\AdminRequest;
 use App\Models\User;
 use App\Models\Admin;
 use Excel;
+use Illuminate\Http\Request;
+
 
 class AdminController extends Controller
 {
     public function index(){
 //        dd(auth('admin')->user());
-        $user = User::all();
-        $admin=Admin::all();
+        $user = User::paginate(10);
+        $admin=Admin::paginate(10);
         return view('admin.index')->with(["user"=>$user,"admin"=>$admin]);
     }
     public function create(){
@@ -94,6 +96,14 @@ class AdminController extends Controller
     public function  exportCSV(){
         return Excel::download(new UsersExport,'User.csv');
     }
+    public function search(Request $request){
+        $query=request('keyword');
+        $user=User::where('email', 'LIKE', '%' .$query. '%')->paginate(10);
+        $admin=Admin::paginate(7);
+        return view('admin.index')->with(['user'=>$user,'admin'=>$admin]);
+
+    }
+
 }
 
 

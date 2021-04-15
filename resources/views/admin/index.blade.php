@@ -6,10 +6,11 @@
     .demo a{
         margin-bottom: 10px;
     }
+
 </style>
 @section('content')
 
-    <form method="GET" action="">
+    <form method="GET" action="{{ route('search') }}">
         <div style="padding: 0 1rem;" class="form-group row">
             <label class="col-form-label text-md-right">Từ Khoá</label>
             <div class="col-md-5">
@@ -47,8 +48,6 @@
             </div>
         </div>
     </form>
-
-
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -95,6 +94,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {!! $user->links() !!}
+                    </div>
                 </div>
                 <div id="menu2" class="container tab-pane fade"><br>
                     <table class="table table-stripped">
@@ -132,6 +134,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                    <div class="d-flex justify-content-center">
+                        {!! $admin->links() !!}
+                    </div>
                 </div>
             </div>
         </div>
