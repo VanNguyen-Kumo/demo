@@ -14,9 +14,9 @@ class UsersExport implements FromCollection, WithHeadings
     public function headings():array{
         return [
             'Email',
-            'Security code',
-            'Video type',
-            'token key'
+            'Security Code',
+            'Video Id',
+            'Token Key'
         ];
     }
     public function collection()

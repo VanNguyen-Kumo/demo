@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use function Symfony\Component\String\b;
 
-class AdminFactory extends Factory
+class VideoFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Admin::class;
+    protected $model = Video::class;
 
     /**
      * Define the model's default state.
@@ -24,9 +23,9 @@ class AdminFactory extends Factory
     {
         return [
             'id'=>$this->faker->uuid(),
-            'username'=>$this->faker->unique()->userName(),
-            'password'=>bcrypt('123456'),
-            'confirm_password'=>bcrypt('123456')
+            'name'=>$this->faker->unique()->sentence(5),
+            'thumbnail_url'=>$this->faker->url(),
+            'url' => $this->faker->url(),
         ];
     }
 }

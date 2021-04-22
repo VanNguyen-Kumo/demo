@@ -26,6 +26,7 @@ class RegisterRequest extends FormRequest
         return [
             'username' => 'required:unique:admins',
             'password' => 'required',
+            'confirm_password'=>'required|same:password',
         ];
 
     }
@@ -35,6 +36,8 @@ class RegisterRequest extends FormRequest
             'username.required' => 'Dữ liệu không được để trống',
             'username.unique'=>'Tên đăng nhập đã có',
             'password.required' => 'Dữ liệu không được để trống',
+            'confirm_password.same' => 'Mật khẩu không trùng nhau',
+            'confirm_password'=>'Không được để trống'
         ];
     }
 }

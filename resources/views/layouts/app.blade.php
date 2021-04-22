@@ -14,6 +14,7 @@
     <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') }}"></script>
     <script src=" {{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js') }}"></script>
     <script src="{{ asset('public/vendor/lrgt/jquery.laravel-ajax-validation.js') }}"></script>
+    <script src="{{ asset('https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js') }}"></script>
 @yield('script')
 
 <!-- Fonts -->

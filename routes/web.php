@@ -22,7 +22,7 @@ Route::group([
     Route::get('/edit-user/{id}',[AdminController::class,'userEdit'])->name('admin.edit-user')->middleware('checkLoginAdmin');
     Route::post('/edit-user/{id}',[AdminController::class,'userUpdate'])->name('admin.update-user');
 //------------------------delete_user------------------------
-    Route::get('/del-user/{id}',[AdminController::class,'userDestroy'])->name('admin.destroy-user')->middleware('checkLoginAdmin');;
+    Route::get('/del-user/{id}',[AdminController::class,'userDestroy'])->name('admin.destroy-user')->middleware('checkLoginAdmin');
 
 //--------------------edit_admin-------------------------
     Route::get('/edit-admin/{id}',[AdminController::class,'adminEdit'])->name('admin.edit-admin')->middleware('checkLoginAdmin');
@@ -32,6 +32,12 @@ Route::group([
     //--------------------export-user-------------------------
     Route::get('/exportExcel-user',[AdminController::class,'exportExcel'])->name('admin.exportExcel-user')->middleware('checkLoginAdmin');
     Route::get('/exportCSV-user',[AdminController::class,'exportCSV'])->name('admin.exportCSV-user')->middleware('checkLoginAdmin');
+    //--------------------import-user-------------------------
+    Route::get('/importCSV-user',[AdminController::class,'fileCSV'])->name('admin.fileCSV-user')->middleware('checkLoginAdmin');
+    Route::post('/importCSV-user',[AdminController::class,'importCSV'])->name('admin.importCSV-user')->middleware('checkLoginAdmin');
+    //--------------------add-video-------------------------
+    Route::get('/create-video',[AdminController::class,'createVideo'])->name('admin.create-video')->middleware('checkLoginAdmin');
+    Route::post('/create-video',[AdminController::class,'storeVideo'])->name('admin.store-video')->middleware('checkLoginAdmin');
 });
 Route::group([
     'prefix'=>'admin',

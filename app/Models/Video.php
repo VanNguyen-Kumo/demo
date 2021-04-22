@@ -3,23 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 use Webpatser\Uuid\Uuid;
-class Admin extends Authenticatable
+
+class Video extends Model
 {
+    use HasFactory;
     public $incrementing = false;
 
-    use HasFactory;
-    protected $table = 'admins';
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'username',
-        'password',
-        'confirm_password',
-
-    ];
-    protected $hidden = [
-        'password',
-        'confirm_password',
+        'name',
+        'thumbnail_url',
+        'url',
     ];
     public static function boot()
     {

@@ -26,6 +26,7 @@ class AdminRequest extends FormRequest
         return [
             'username'=>'required:unique:admins',
             'password'=>'required',
+
         ];
     }
     public function messages()
@@ -34,6 +35,7 @@ class AdminRequest extends FormRequest
             'username.required' => 'Dữ liệu không được để trống',
             'username.unique'=>'Username đã tồn tại',
             'password.required' => 'Dữ liệu không được để trống',
+
         ];
     }
 

@@ -8,26 +8,29 @@
     }
 
 </style>
+@include('sweetalert::alert')
 @section('content')
 
     <form method="GET" action="{{ route('search') }}">
         <div style="padding: 0 1rem;" class="form-group row">
             <label class="col-form-label text-md-right">Từ Khoá</label>
-            <div class="col-md-5">
+            <div class="col-md-4">
                 <div class="d-flex align-items-center">
                     <input class="form-control" placeholder="Vui lòng nhập địa chỉ email hoặc mật khẩu xem của bạn."
                            value="" name="keyword">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-7">
                 <div class="d-flex align-items-center">
-                    <button class="form-control btn btn-primary" style="margin: 0 20px; width: 120px"
+                    <button class="form-control btn btn-primary" style="width: 120px"
                             type="submit">Tìm kiếm
                     </button>
-                    <a href="{{ route('admin.exportCSV-user') }}" tyle="margin-left: 70px;">Export CSV</a>
+                    <a href="{{ route('admin.exportCSV-user') }} " style="margin-left:13px">Export CSV</a>
+                    <a href="{{ route('admin.fileCSV-user') }}" style="margin-left:13px ">Import CSV</a>
+                    <a href="{{ route('admin.create-video') }}" style="margin-left:13px ">Add Video</a>
                     <div class="dropdown">
                         <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" style="
-                            margin-left: 50px;color: #3F7DC7">Xin chào {{ Auth::guard('admin')->user()->username }}
+                            margin-left: 30px;color: #3F7DC7">Xin chào {{ Auth::guard('admin')->user()->username }}
                             <span class="caret"></span></button>
                         <ul class="dropdown-menu">
                             <li style="text-align: center;padding: 5px 0;">
@@ -48,6 +51,14 @@
             </div>
         </div>
     </form>
+    @include('sweetalert::alert')
+    @if(Session::has('message-update'))
+
+        <div class="alert"></div>
+        {{ Session::get('message-update') }}
+    @endif
+
+
         <div class="container">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
@@ -67,7 +78,7 @@
                             <th scope="col"></th>
                             <th scope="col">Email</th>
                             <th scope="col">Sevurity Code</th>
-                            <th scope="col">Video Type</th>
+                            <th scope="col">Token Key</th>
                             <th scope="col"></th>
                         </tr>
                         </thead>
@@ -81,7 +92,7 @@
                                 @endif
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->security_code}}</td>
-                                <td>{{$item->video_type}}</td>
+                                <td>{{$item->token_key}}</td>
                                 <td>
                                     @if( Auth::guard('admin')->user()->is_super_admin === 1)
                                     <a href="{{ route('admin.edit-user',$item->id) }}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i> Update </a>
@@ -105,7 +116,6 @@
                             <th scope="col"></th>
                             <th scope="col">UserName</th>
                             <th scope="col">PassWord</th>
-                            <th scope="col" id="sort">Is_super_admin<span class="fa fa-sort"></span></th>
                             <th></th>
                         </tr>
                         </thead>
@@ -119,7 +129,6 @@
                                 @endif
                                 <td>{{$admins->username}}</td>
                                 <td>{{$admins->password}}</td>
-                                <td>{{$admins->is_super_admin}}</td>
                                 <td>
                                     @if( Auth::guard('admin')->user()->is_super_admin === 1)
                                         <div class="demo">

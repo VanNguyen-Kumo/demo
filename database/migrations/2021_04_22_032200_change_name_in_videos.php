@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Codes extends Migration
+class ChangeNameInVideos extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class Codes extends Migration
      */
     public function up()
     {
-        Schema::create('codes', function (Blueprint $table) {
-            $table->string('code');
+        Schema::table('videos', function (Blueprint $table) {
+            $table->string('name')->nullable()->change();
         });
     }
 
@@ -25,6 +25,8 @@ class Codes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codes');
+        Schema::table('videos', function (Blueprint $table) {
+            //
+        });
     }
 }

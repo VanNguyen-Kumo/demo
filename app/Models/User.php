@@ -23,10 +23,9 @@ class User extends Authenticatable
     protected $fillable = [
         'email',
         'security_code',
-        'video_type',
+        'video_id',
         'token_key',
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -56,7 +55,7 @@ class User extends Authenticatable
         return Uuid::generate();
     }
     public static function getUser(){
-        $records=DB::table('users')->select('email', 'security_code', 'video_type', 'token_key')->get()->toArray();
+        $records=DB::table('users')->select('email', 'security_code', 'video_id', 'token_key')->get()->toArray();
         return $records;
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Mail\SendMail;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -39,27 +40,21 @@ class MailController extends Controller
         }
 
     }
+    // xử lí nhập mã token
     public function sendToken(Request $request)
     {
-        $token_key = User::select('token_key','video_type')->where('token_key', '=', $request->token_key)->first();
-        $user=User::where('token_key', '=', $request->token_key)->first();
-        $user->token_key=null;
-        $user->save();
+        $token_key = User::select('token_key','video_id')->where('token_key', '=', $request->token_key)->first();
+//        $user=User::where('token_key', $request->token_key)->first();
+//        $user->token_key=null;
+//        $user->save();
         if($token_key===null)
         {
             return view('verify-token');
         }
-        elseif($token_key->video_type==='B'){
-
-            return view('videoB');
-
+        else{
+            $video=Video::where('id',$token_key->video_id)->first();
+            return view('url')->with('video',$video);
         }
-        elseif ($token_key->video_type==='A'){
-
-            return view('videoA');
-
-        }
-
     }
     function random_alphanumeric_string($length)
     {

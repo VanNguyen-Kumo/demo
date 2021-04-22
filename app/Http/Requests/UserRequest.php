@@ -29,12 +29,9 @@ class UserRequest extends FormRequest
                 'required',
                 'size:8',
                 'regex:/^(?=.*?[A-Z])(?=.*?[0-9]).+$/'
-
         ],
-            'video_type'=>'required',
-            'token_key'=>'nullable',
+            'video_id'=> 'exists:videos,id'
         ];
-
     }
     public function messages()
     {
@@ -47,11 +44,4 @@ class UserRequest extends FormRequest
 
         ];
     }
-    public function attributes(){
-        return [
-            'security_code'=>'code',
-        ];
-    }
-
-
 }

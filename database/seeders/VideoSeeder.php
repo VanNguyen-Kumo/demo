@@ -3,11 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Database\Factories\UserFactory;
-use Faker\Factory;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class VideoSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-      User::factory()->count(5)->create();
+        Video::factory()->count(5)->create();
     }
 }
