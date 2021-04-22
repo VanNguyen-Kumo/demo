@@ -53,7 +53,7 @@ class MailController extends Controller
         }
         else{
             $video=Video::where('id',$token_key->video_id)->first();
-            return view('url')->with('video',$video);
+            return view('video')->with('video',$video);
         }
     }
     function random_alphanumeric_string($length)

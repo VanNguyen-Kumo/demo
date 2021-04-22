@@ -4,76 +4,76 @@
     <link href="{{ asset('css/colorbox.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
-{{--@section('script')--}}
-{{--    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>--}}
-{{--    <script type="text/javascript"--}}
-{{--            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>--}}
-{{--    <script>--}}
-{{--        $(function () {--}}
-{{--            $(document).ready(colorbox)--}}
-{{--            $(window).on('resize', colorbox)--}}
+@section('script')
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
+    <script>
+        $(function () {
+            $(document).ready(colorbox)
+            $(window).on('resize', colorbox)
 
-{{--            function colorbox () {--}}
-{{--                var baseWidth = $(window).width()--}}
-{{--                var w = baseWidth * 0.8--}}
-{{--                var h = w * 0.565--}}
-{{--                $('.movie-modal').colorbox({--}}
-{{--                    iframe: true,--}}
-{{--                    innerWidth: w,--}}
-{{--                    innerHeight: h,--}}
-{{--                    maxWidth: '100%',--}}
-{{--                })--}}
-{{--            }--}}
-{{--        })--}}
+            function colorbox () {
+                var baseWidth = $(window).width()
+                var w = baseWidth * 0.8
+                var h = w * 0.565
+                $('.movie-modal').colorbox({
+                    iframe: true,
+                    innerWidth: w,
+                    innerHeight: h,
+                    maxWidth: '100%',
+                })
+            }
+        })
 
-{{--        window.addEventListener('orientationchange', () => {--}}
-{{--            $(document).ready(colorbox)--}}
-{{--            $(window).on('resize', colorbox)--}}
+        window.addEventListener('orientationchange', () => {
+            $(document).ready(colorbox)
+            $(window).on('resize', colorbox)
 
-{{--            function colorbox () {--}}
-{{--                var baseWidth = $(window).width()--}}
-{{--                var w = baseWidth * 0.8--}}
-{{--                var h = w * 0.565--}}
-{{--                $('.movie-modal').colorbox({--}}
-{{--                    iframe: true,--}}
-{{--                    innerWidth: w,--}}
-{{--                    innerHeight: h,--}}
-{{--                    maxWidth: '90%',--}}
-{{--                })--}}
-{{--            }--}}
-{{--        })--}}
+            function colorbox () {
+                var baseWidth = $(window).width()
+                var w = baseWidth * 0.8
+                var h = w * 0.565
+                $('.movie-modal').colorbox({
+                    iframe: true,
+                    innerWidth: w,
+                    innerHeight: h,
+                    maxWidth: '90%',
+                })
+            }
+        })
 
 
-{{--    </script>--}}
-{{--    <!-- Google Tag Manager -->--}}
-{{--    <script>--}}
-{{--        (function (w, d, s, l, i) {--}}
-{{--            w[l] = w[l] || []--}}
-{{--            w[l].push({--}}
-{{--                'gtm.start': new Date().getTime(),--}}
-{{--                event: 'gtm.js',--}}
-{{--            })--}}
-{{--            var f = d.getElementsByTagName(s)[0],--}}
-{{--                j = d.createElement(s),--}}
-{{--                dl = l != 'dataLayer' ? '&l=' + l : ''--}}
-{{--            j.async = true--}}
-{{--            j.src =--}}
-{{--                'https://www.googletagmanager.com/gtm.js?id=' + i + dl--}}
-{{--            f.parentNode.insertBefore(j, f)--}}
-{{--        })(window, document, 'script', 'dataLayer', 'GTM-KK8GXFB')--}}
-{{--    </script>--}}
-{{--    <!-- End Google Tag Manager -->--}}
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []
+            w[l].push({
+                'gtm.start': new Date().getTime(),
+                event: 'gtm.js',
+            })
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s),
+                dl = l != 'dataLayer' ? '&l=' + l : ''
+            j.async = true
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+            f.parentNode.insertBefore(j, f)
+        })(window, document, 'script', 'dataLayer', 'GTM-KK8GXFB')
+    </script>
+    <!-- End Google Tag Manager -->
 
-{{--@endsection--}}
+@endsection
 
-{{--@section('google')--}}
-{{--    <!-- Google Tag Manager (noscript) -->--}}
-{{--    <noscript>--}}
-{{--        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK8GXFB" height="0" width="0"--}}
-{{--                style="display:none;visibility:hidden"></iframe>--}}
-{{--    </noscript>--}}
-{{--    <!-- End Google Tag Manager (noscript) -->--}}
-{{--@endsection--}}
+@section('google')
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KK8GXFB" height="0" width="0"
+                style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+@endsection
 
 @section('main')
     <div class="v_head02">
@@ -90,20 +90,19 @@
         </div>
     </div>
     <div class="v_s1">
-{{--        <div class="v_s1_th_flex">--}}
-{{--            <div class="v_s1_th">--}}
-{{--                <a class="movie-modal" href="">--}}
-{{--                    <picture>--}}
-
-{{--                        <video style="display: none;"><![endif]-->--}}
-{{--                        <source media="(min-width:781px)" srcset="{{ asset('image/th01.png') }}">--}}
-{{--                        <source media="(max-width:780px)" srcset="{{ asset('spimages/th01.png') }}">--}}
-{{--                       </video><![endif]-->--}}
-{{--                        <img src="{{ asset('image/th01.png') }}" alt="" class="switching">--}}
-{{--                    </picture>--}}
-{{--                </a>--}}
-{{--            </div>--}}
-
+        <div class="v_s1_th_flex">
+            <div class="v_s1_th">
+                <a class="movie-modal" href="{{$video->url}}">
+                    <h4>{{$video->name}}</h4>
+                    <picture>
+                        <video style="display: none;"><![endif]-->
+                        <source media="(min-width:781px)" srcset="images/{{$video->thumbnail_url }}">
+                        <source media="(max-width:780px)" srcset="{{ asset('spimages/th01.png') }}">
+                       </video><![endif]-->
+                        <img src="images/{{$video->thumbnail_url }}" alt="" class="switching">
+                    </picture>
+                </a>
+            </div>
 {{--            <div class="v_s1_th">--}}
 {{--                <a class="movie-modal" href="">--}}
 {{--                    <picture>--}}
@@ -192,13 +191,9 @@
 {{--                    </picture>--}}
 {{--                </a>--}}
 {{--            </div>--}}
-{{--        </div>--}}
+        </div>
         <div>
 
-                <h3>{{$video}}</h3>
-{{--                <div class="embed-responsive embed-responsive-16by9">--}}
-{{--                    <iframe class="embed-responsive-item" src="{{ $item->url }}" allowfullscreen></iframe>--}}
-{{--                </div>--}}
 
         </div>
         <div class="v_s1_logout">
