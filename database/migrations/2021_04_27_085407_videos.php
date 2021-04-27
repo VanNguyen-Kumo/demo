@@ -15,7 +15,7 @@ class Videos extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->string('id', 36);
-            $table->string('name')->unique();
+            $table->string('name')->unique()->nullable();
             $table->string('thumbnail_url')->nullable();
             $table->string('url')->nullable();
             $table->timestamps();

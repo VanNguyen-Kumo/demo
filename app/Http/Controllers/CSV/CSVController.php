@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\CSV;
 
+use App\Exports\UsersExport;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
-use App\Models\User;
-use App\Models\Video;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
-
-class UserController extends Controller
+use Excel;
+class CSVController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
+        //
     }
 
     /**
@@ -27,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        //
     }
 
     /**
@@ -36,14 +35,9 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(Request $request)
     {
-
-        $video_id=Video::select('id')->first();
-        $params=$request->validated();
-        $params['video_id'] = $video_id->id;
-        User::create($params->validated());
-        return redirect('/admin');
+        //
     }
 
     /**
@@ -63,11 +57,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($locale,$id)
+    public function edit($id)
     {
-
-        $user = User::where('id',$id)->first();
-        return view('user.edit')->with('user', $user);
+        //
     }
 
     /**
@@ -77,11 +69,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request,$locale, $id)
+    public function update(Request $request, $id)
     {
-
-        User::where('id',$id)->update($request->validated());
-        return Redirect(config('constants.locale').'/admin')->with('success', 'Update success');
+        //
     }
 
     /**
@@ -90,10 +80,28 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($locale,$id)
+    public function destroy($id)
     {
+        //
+    }
+    public function exportExcel()
+    {
+        return Excel::download(new UsersExport, 'User.xlsx');
+    }
 
-        User::where('id',$id)->delete();
-        return redirect(config('constants.locale').'/admin');
+    public function exportCSV()
+    {
+        return Excel::download(new UsersExport, 'User.csv');
+    }
+
+    public function fileCSV(){
+        return view('csv.import-csv');
+    }
+
+    public function importCSV( Request $request)
+    {
+        $path = $request->file('csv')->getRealPath();
+        Excel::import(new UsersImport,$path);
+        return redirect(config('constants.locale').'admin');
     }
 }

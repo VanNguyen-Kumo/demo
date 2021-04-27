@@ -32,4 +32,8 @@ class Video extends Model
     {
         return Uuid::generate();
     }
+    public function users(){
+
+        return $this->hasMany(User::class);
+    }
 }

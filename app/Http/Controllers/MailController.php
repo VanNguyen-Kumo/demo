@@ -44,9 +44,9 @@ class MailController extends Controller
     public function sendToken(Request $request)
     {
         $token_key = User::select('token_key','video_id')->where('token_key', '=', $request->token_key)->first();
-//        $user=User::where('token_key', $request->token_key)->first();
-//        $user->token_key=null;
-//        $user->save();
+        $user=User::where('token_key', $request->token_key)->first();
+        $user->token_key=null;
+        $user->save();
         if($token_key===null)
         {
             return view('verify-token');

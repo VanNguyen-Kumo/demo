@@ -1,14 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Video;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\VideoRequest;
+use App\Models\Admin;
 use App\Models\User;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
-class UserController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('user.index');
     }
 
     /**
@@ -27,7 +28,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+
+        return view('video.create');
     }
 
     /**
@@ -36,14 +38,15 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(VideoRequest $request)
     {
 
-        $video_id=Video::select('id')->first();
-        $params=$request->validated();
-        $params['video_id'] = $video_id->id;
-        User::create($params->validated());
-        return redirect('/admin');
+        $ext    = $request->thumbnail_url->getClientOriginalName();
+        $request->thumbnail_url->move(public_path('images'),$ext);
+        $image = $request->validated();
+        $image['thumbnail_url'] = $ext;
+        Video::create($image);
+        return redirect(config('constants.locale').'/admin');
     }
 
     /**
@@ -66,8 +69,8 @@ class UserController extends Controller
     public function edit($locale,$id)
     {
 
-        $user = User::where('id',$id)->first();
-        return view('user.edit')->with('user', $user);
+        $video = Video::where('id',$id)->first();
+        return view('video.edit')->with('video', $video);
     }
 
     /**
@@ -77,10 +80,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request,$locale, $id)
+    public function update(VideoRequest $request,$locale, $id)
     {
 
-        User::where('id',$id)->update($request->validated());
+        $ext    = $request->thumbnail_url->getClientOriginalName();
+        $request->thumbnail_url->move(public_path('images'),$ext);
+        $image = $request->validated();
+        $image['thumbnail_url'] = $ext;
+         Video::query()->where('id',$id)->update($image);
         return Redirect(config('constants.locale').'/admin')->with('success', 'Update success');
     }
 
@@ -93,7 +100,9 @@ class UserController extends Controller
     public function destroy($locale,$id)
     {
 
-        User::where('id',$id)->delete();
+        $video = Video::query()->find($id);
+        $video->delete();
+        //Video::where('id',$id)->delete();
         return redirect(config('constants.locale').'/admin');
     }
 }

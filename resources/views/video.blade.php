@@ -94,12 +94,13 @@
             <div class="v_s1_th">
                 <a class="movie-modal" href="{{$video->url}}">
                     <h4>{{$video->name}}</h4>
+
                     <picture>
-                        <video style="display: none;"><![endif]-->
-                        <source media="(min-width:781px)" srcset="images/{{$video->thumbnail_url }}">
-                        <source media="(max-width:780px)" srcset="{{ asset('spimages/th01.png') }}">
-                       </video><![endif]-->
-                        <img src="images/{{$video->thumbnail_url }}" alt="" class="switching">
+                        <video style="display: none;">
+                        <source media="(min-width:781px)" srcset="{{asset('/images/'.$video->thumbnail_url)}}">
+                       </video>
+                        <img src="{{asset('/images/'.$video->thumbnail_url)}}" width="200" height="200" class="switching"/>
+
                     </picture>
                 </a>
             </div>

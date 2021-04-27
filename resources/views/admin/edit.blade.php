@@ -4,34 +4,34 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <a href="{{ route('home') }}" class="text-sm text-gray-700 underline card-header">Home</a>
+                <a href="{{ route('home',config('constants.locale')) }}" class="text-sm text-gray-700 underline card-header">@lang('home.home')</a>
                 <div class="card">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admin.update-admin',$admin->id) }}" id="myform">
+                        <form method="POST" action="{{ route('admin.update-admin',['id'=>$admin->id,'locale'=>(app()->getLocale())])}}" id="myform">
                             @csrf
                             <div class="form-group row">
-                                <label class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+                                <label class="col-md-4 col-form-label text-md-right">@lang('home.username')</label>
                                 <div class="col-md-6">
                                     <input type="text" class="form-control" name="username" value="{{ old('username',$admin->username) }}">
                                     @if($errors->has('username'))
-                                        <div class="error">{{ $errors->first('username') }}</div>
+                                        <div class="alert alert-danger">{{ $errors->first('username') }}</div>
                                     @endif
                                 </div>
                             </div>
 
                             <div class="form-group row">
-                                <label class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <label class="col-md-4 col-form-label text-md-right">@lang('home.password')</label>
                                 <div class="col-md-6">
                                     <input type="password" class="form-control" name="password">
                                     @if($errors->has('password'))
-                                        <div class="error">{{ $errors->first('password') }}</div>
+                                        <div class="alert alert-danger">{{ $errors->first('password') }}</div>
                                     @endif
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <label class="col-md-4 col-form-label text-md-right">{{ __('Is_super_admin') }}</label>
+                                    <label class="col-md-4 col-form-label text-md-right">@lang('home.role')</label>
                                     <div class="col-md-6">
                                         <select class="form-control" id="exampleFormControlSelect1" name="is_super_admin">
                                             <option>1</option>
@@ -43,7 +43,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Save') }}
+                                        @lang('home.save')
                                     </button>
                                 </div>
                             </div>

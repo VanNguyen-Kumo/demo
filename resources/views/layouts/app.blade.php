@@ -14,7 +14,7 @@
     <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js') }}"></script>
     <script src=" {{ asset('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js') }}"></script>
     <script src="{{ asset('public/vendor/lrgt/jquery.laravel-ajax-validation.js') }}"></script>
-    <script src="{{ asset('https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js') }}"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 @yield('script')
 
 <!-- Fonts -->
@@ -24,6 +24,7 @@
     <link rel="stylesheet" href=" {{ asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css') }}">
     <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js') }}"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.1.0/css/flag-icon.min.css" rel="stylesheet">
 </head>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

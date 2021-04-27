@@ -1,0 +1,32 @@
+<?php
+return[
+    'home'=>'Trang chủ',
+    'search' => 'Tìm kiếm',
+    'keyword'=>'Từ khoá',
+    'placeholder'=>'Nhập thông tin tìm kiếm',
+    'language'=>'Ngôn ngữ',
+    'vietnamese'=>'Tiếng Việt',
+    'english'=>'Tiếng Anh',
+    'import'=>'Nhập File',
+    'export'=>'Xuất File',
+    'hello'=>'Xin chào',
+    'logout'=>'Đăng xuất',
+    'create'=>'Đăng kí',
+    'create_user'=>'Thêm người dùng',
+    'create_video'=>'Thêm video mới',
+    'user'=>'Người dùng',
+    'admin'=>'Quản trị',
+    'email'=>'Email',
+    'security_code'=>'Mã code',
+    'video_name'=>'Tên video',
+    'username'=>'Tên đăng nhập',
+    'password'=>'Mật khẩu',
+    'confirm_password'=>'Nhập lại mật khẩu',
+    'role'=>'Phân quyền',
+    'save'=>'Lưu',
+    'login'=>'Đăng nhập',
+    'add_user'=>'Thêm tài khoản quản trị',
+    'video'=>'Video',
+
+]
+?>

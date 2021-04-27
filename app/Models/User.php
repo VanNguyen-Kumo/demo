@@ -58,4 +58,7 @@ class User extends Authenticatable
         $records=DB::table('users')->select('email', 'security_code', 'video_id', 'token_key')->get()->toArray();
         return $records;
     }
+    public function video(){
+        return $this->belongsTo(Video::class);
+    }
 }

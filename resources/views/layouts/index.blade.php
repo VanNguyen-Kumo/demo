@@ -8,6 +8,7 @@
     <meta name="format-detection" content="telephone=no">
     <link href="{{ asset('css/html5reset-1.6.1.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/common.css') }}" rel="stylesheet" type="text/css">
+
     @yield('style')
 
     @yield('script')

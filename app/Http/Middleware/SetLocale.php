@@ -5,9 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Auth;
 
-class CheckLoginAdmin
+class SetLocale
 {
     /**
      * Handle an incoming request.
@@ -21,16 +20,7 @@ class CheckLoginAdmin
         if (session()->has('locale')) {
             App::setLocale(session()->get('locale'));
         }
-        $locale=app()->getLocale();
-       // if(Auth::guard('admin')->check()&&Auth::guard('admin')->user()->is_super_admin===1)
-        if(Auth::guard('admin')->check())
-        {
-            return $next($request);
-        }else{
-            return redirect($locale.'/admin/login');
-        }
+        return $next($request);
 
     }
-
-
 }

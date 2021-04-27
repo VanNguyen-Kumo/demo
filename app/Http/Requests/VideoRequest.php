@@ -25,7 +25,10 @@ class VideoRequest extends FormRequest
     {
         return [
             'name'=>'required|unique:videos',
-            'url'=>'required',
+            'url'=>[
+                'required',
+                'regex:/^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/'
+                ],
             'thumbnail_url'=>'required|mimes:jpg,png,jpeg|max:5048'
         ];
     }
@@ -35,6 +38,7 @@ class VideoRequest extends FormRequest
          'name.required'=>'không được để trống',
          'name.unique'=>'Tên video đã tồn tại',
          'url.required'=>'không được để trống',
+           'url.regex'=>'Đường đẫn không hợp lệ',
          'thumbnail_url.required'=>'không được để trống',
            'thumbnail_url.mimes'=>'Định dạng jpg,png,jpeg',
        ];
