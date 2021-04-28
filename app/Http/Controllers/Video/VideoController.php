@@ -4,11 +4,7 @@ namespace App\Http\Controllers\Video;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\VideoRequest;
-use App\Models\Admin;
-use App\Models\User;
 use App\Models\Video;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class VideoController extends Controller
 {
@@ -45,7 +41,7 @@ class VideoController extends Controller
         $request->thumbnail_url->move(public_path('images'),$ext);
         $image = $request->validated();
         $image['thumbnail_url'] = $ext;
-        Video::create($image);
+        Video::query()->create($image);
         return redirect(config('constants.locale').'/admin');
     }
 
@@ -69,7 +65,7 @@ class VideoController extends Controller
     public function edit($locale,$id)
     {
 
-        $video = Video::where('id',$id)->first();
+        $video = Video::query()->where('id',$id)->first();
         return view('video.edit')->with('video', $video);
     }
 

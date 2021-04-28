@@ -30,12 +30,14 @@
                             <div class="form-group row">
                                 <label class="col-md-2 col-form-label ">@lang('video.thumbnail_url')</label>
                                 <div class="col-md-9">
-                                    <input type="file" class="form-control" name="thumbnail_url" style="height: calc(1.6em + 0.75rem + 7px);">
+                                    <input id="upload_img" type="file" class="form-control" name="thumbnail_url" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])" >
                                     @if($errors->has('thumbnail_url'))
                                         <div class="alert alert-danger">{{ $errors->first('thumbnail_url') }}</div>
                                     @endif
+
                                 </div>
                             </div>
+                            <p style="padding-left: 18%"><img id="output" style="width: 70%;height: 60%"/></p>
                             <div class="form-group row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
@@ -49,4 +51,5 @@
             </div>
         </div>
     </div>
+
 @endsection
